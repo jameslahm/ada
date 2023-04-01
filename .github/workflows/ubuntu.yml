@@ -29,3 +29,13 @@ jobs:
         run: ctest --output-on-failure --test-dir build
       - name: Run default benchmark
         run: cd build && benchmarks/bench
+      - name: Prepare-No-Dispatch
+        run: cmake -D ADA_BENCHMARKS=ON -DBUILD_SHARED_LIBS=${{matrix.shared}} -G Ninja -B build -D ADA_NO_DISPATCH=ON
+        env:
+          CXX: ${{matrix.cxx}}
+      - name: Build-No-Dispatch
+        run: cmake --build build -j=2
+      - name: Test-No-Dispatch
+        run: ctest --output-on-failure --test-dir build
+      - name: Run default benchmark-No-Dispatch
+        run: cd build && benchmarks/bench

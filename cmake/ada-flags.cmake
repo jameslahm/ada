@@ -12,6 +12,7 @@ if(ADA_SANITIZE_UNDEFINED)
   message(STATUS "Undefined sanitizer enabled.")
 endif()
 option(ADA_COVERAGE "Compute coverage" OFF)
+option(ADA_NO_DISPATCH "Whether to use dispatch table in parsing" OFF)
 
 if (ADA_COVERAGE)
     message(STATUS "You want to compute coverage. We assume that you have installed gcovr.")
